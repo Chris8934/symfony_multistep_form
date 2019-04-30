@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Validator\EventListener\ValidationListener;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 /**
  * @author Sven Wappler
@@ -71,5 +72,14 @@ class FormTypeValidatorExtension extends BaseValidatorExtension
     public function getExtendedType()
     {
         return 'Symfony\Component\Form\Extension\Core\Type\FormType';
+    }
+    
+    /**
+    * @link https://symfony.com/blog/new-in-symfony-4-2-improved-form-type-extensions
+    * {@inheritdoc}
+    */
+    public function getExtendedTypes(): iterable
+    {
+		return [FormType::class];
     }
 }
